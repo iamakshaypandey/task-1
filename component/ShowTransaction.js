@@ -21,10 +21,8 @@ function ShowTransaction() {
             <th className={`${style.th}`} scope="col-4 th"></th>
             <th className={`${style.th}`} scope="col-2 th"></th>
             <th className={`${style.th}`} scope="col-2 th"></th>
-            <Link href={`/addTransation`}>
+            <Link href={`/Home`}>
                 <th className={`${style.th}`} scope="col-3 th"> + Add Transaction</th>
-              {/* <a>
-              </a> */}
             </Link>
             </tr>
         </thead>
@@ -41,7 +39,7 @@ function ShowTransaction() {
               return(
                 <>
                 <tr key={post.Date}>
-                  <th className={`${style.th}`} scope="row">{post.Date.slice(0,19)}</th>
+                  <th className={`${style.th}`} scope="row">{post.Date?.slice(0,19)}</th>
                   <td className={`${style.th}`}>{post.Discreption}</td>
                   <td className={`${style.th}`}>{post.Credit}</td>
                   <td className={`${style.th}`}>{post.Debit}</td>

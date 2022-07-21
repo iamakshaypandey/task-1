@@ -1,31 +1,38 @@
 import {useState,useEffect} from 'react'
-// import na
+import Link from 'next/link'
+
 
 function AddExpensive() {
     const [CreditAmmount,setCreditAmmount] = useState('')
     const [DebitAmmount,setDebititAmmount] = useState('')
     const [RunningAmmount,setRunningAmmount] = useState(5000)
     const [Discreption,setDiscreption] = useState('')
+    
+    
+    const data = 
+    [{
+        Date: new Date(),
+        Discreption:Discreption,
+        Credit:CreditAmmount,
+        Debit:DebitAmmount,
+        RunningBalance: RunningAmmount
+    }]
+    // const [StoreData,setStoreData] = useState(data)
 
-
-    const data = [
-        {
-            Date: new Date(),
-            Discreption:Discreption,
-            Credit:CreditAmmount,
-            Debit:DebitAmmount,
-            RunningBalance: RunningAmmount
-        }
-    ]
+//    useEffect(()=>{
+//     setStoreData((prev)=>[...prev],[...data])
+//    },[])
+    
     
     
     const add =(e)=>{
+        e.preventdefault()
         console.log('calling',e);
     }
     
     const handleChange=(e)=>{    
         setCreditAmmount(e.target.value)
-        setRunningAmmount(RunningAmmount+CreditAmmount)
+        setRunningAmmount(+CreditAmmount+RunningAmmount)
     }
 
     const handleChangeDis=(e)=>{
@@ -73,10 +80,14 @@ function AddExpensive() {
                         <input type="text"  onChange={handleChange} value={CreditAmmount} />
                         <label htmlFor="">Description</label>
                         <input type="text"  onChange={handleChangeDis} value={Discreption} />
-                        <button onClick={clickHandlerSave} type="button" className="btn btn-primary">save</button>
-                        <button onClick={clickHandlerCancel} type="button" className="btn btn-secondary">cancel</button>
+                        <Link href='/'>
+                            <button onClick={clickHandlerSave} type="button" className="btn btn-primary">save</button>
+                        </Link>
                     </form>
                 </div>
+                <Link href='/'>
+                    <button onClick={clickHandlerCancel} type="button" className="btn btn-secondary">cancel</button>
+                </Link>
                 <div>
                 </div>
             </div>
